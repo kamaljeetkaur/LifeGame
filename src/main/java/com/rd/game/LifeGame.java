@@ -1,13 +1,5 @@
+package com.rd.game;
 
-/**
- * 
- * @author kamal
- * 
- *         Input: 100 states
- * 
- * 
- *
- */
 public class LifeGame {
 
 	public int[][] nextState(int[][] table, int rows, int columns) {
@@ -18,15 +10,15 @@ public class LifeGame {
 		printGrid(table, rows, columns);
 		System.out.println("***************  PREVIOUS GRID FINISHED  ***************");
 
-		for (int i = 0; i <= rows - 1; i++) {
-			for (int x = 0; x <= columns - 1; x++) {
+		for (int i = 0; i <= rows -2; i++) {
+			for (int x = 0; x <= columns - 2; x++) {
 
 				int liveCount = 0;
 				int deadCount = 0;
 
 				// calculate one row above cell
-				if (i > 0 ) { // edge case scenario - check if it is the first row
-					if( x > 0) { // edge case scenario - check if it is the first column
+				if (i > 0 ) { 
+					if( x > 0) { 
 						if (table[i - 1][x - 1] == STATES.DEAD.getStatus()) {
 							++deadCount;
 						} else {
@@ -50,7 +42,7 @@ public class LifeGame {
 				}
 
 				// calculate - row where cell belongs
-				if (x > 0) { // edge case scenario - check if it is the first column
+				if (x > 0) {
 					if (table[i][x - 1] == STATES.DEAD.getStatus()) {
 						++deadCount;
 					} else {
@@ -58,7 +50,7 @@ public class LifeGame {
 					}
 				}
 
-				if (x < (columns - 1)) { // edge case scenario - check if it is not the last column
+				if (x < (columns - 1)) { 
 					if (table[i][x + 1] == STATES.DEAD.getStatus()) {
 						++deadCount;
 					} else {
@@ -67,8 +59,8 @@ public class LifeGame {
 				}
 
 				// calculate - one row below cell
-				if (i < (rows - 1)) { // edge case scenario - check if it is not the last row
-					if (x > 0) {  // edge case scenario - check if it is not the first column
+				if (i < (rows - 1)) {
+					if (x > 0) { 
 						if (table[i + 1][x - 1] == STATES.DEAD.getStatus()) {
 							++deadCount;
 						} else {
@@ -82,7 +74,7 @@ public class LifeGame {
 						++liveCount;
 					}
 
-					if (x < (columns - 1)) { // edge case scenario - check if it is not the last column
+					if (x < (columns - 1)) {
 						if (table[i + 1][x + 1] == STATES.DEAD.getStatus()) {
 							++deadCount;
 						} else {
